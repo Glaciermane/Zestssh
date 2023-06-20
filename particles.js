@@ -125,3 +125,44 @@ document.addEventListener("DOMContentLoaded", function() {
         repulse: {
           distance: 200,
           duration: 0.4
+                  },
+        push: {
+          particles_nb: 4
+        },
+        remove: {
+          particles_nb: 2
+        }
+      }
+    },
+    retina_detect: true
+  });
+
+  // Formular für die Benutzereingabe abfangen
+  const form = document.getElementById('input-form');
+  const inputField = document.getElementById('input-field');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const command = inputField.value.trim();
+    if (command !== '') {
+      term.writeln('$ ' + command);
+      term.writeln('User input: ' + command);
+
+      // Zurücksetzen des Eingabefelds
+      inputField.value = '';
+    }
+
+    // Partikelanimation auslösen
+    particlesJS('particles-js', {
+      particles: {
+        move: {
+          speed: 20, // Anpassen der Geschwindigkeit der Partikelbewegung
+          direction: 'top', // Partikelbewegungsrichtung von unten nach oben
+          out_mode: 'destroy' // Partikel aus dem Canvas entfernen, wenn sie den Bildschirm verlassen
+        }
+      }
+    });
+  });
+});
+
