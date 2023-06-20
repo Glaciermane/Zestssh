@@ -32,5 +32,5 @@ sshClient.connect({
   host: HOST,
   port: PORT,
   username: USERNAME,
-  password: SSHKEY
+  privateKey: SSHKEY
 });
