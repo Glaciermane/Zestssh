@@ -2,49 +2,58 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Zest SSH Terminal</title>
+  <title>Neon SSH Terminal</title>
   <style>
+    body {
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
     #terminal-container {
+      width: 600px;
       height: 400px;
-      background-color: #1f1f1f;
+      background-color: #0a0a0a;
       color: #ffffff;
       font-family: monospace;
       font-size: 14px;
       padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .input-container input[type="text"] {
+      flex: 1;
+      padding: 5px;
+      background-color: transparent;
+      color: #ffffff;
+      border: none;
+      border-bottom: 1px solid #00ffff;
+      outline: none;
+    }
+
+    .input-container button {
+      padding: 5px 10px;
+      background-color: #00ffff;
+      color: #000000;
+      border: none;
+      border-radius: 3px;
+      margin-left: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div id="terminal-container"></div>
-  <input type="text" id="command-input">
-  <button onclick="sendCommand()">Senden</button>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.css" />
-
-  <script>
-    const terminalContainer = document.getElementById('terminal-container');
-    const term = new Terminal();
-    term.setOption('theme', {
-      background: '#1f1f1f',
-      foreground: '#ffffff',
-      // ...
-    });
-
-    term.open(terminalContainer);
-
-    function sendCommand() {
-      const commandInput = document.getElementById('command-input');
-      const command = commandInput.value;
-
-      term.writeln('$ ' + command);
-      // Hier kannst du den Code einfügen, um das Kommando an das Terminal zu senden und die Ausgabe zu verarbeiten
-
-      commandInput.value = '';
-    }
-
-    term.focus();
-  </script>
-  <link rel="stylesheet" href="style.css">
-</body>
-</html>
+  <div class="input-container">
+    <input type="
