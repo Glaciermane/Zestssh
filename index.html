@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>Terminal Terminal</title>
+  <link rel="stylesheet" href="terminal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="terminal.js"></script>
+  <script src="particles.js"></script>
+  
   <style>
     body {
       background-color: #000000;
@@ -54,62 +63,51 @@
   </style>
 </head>
 <body>
-  <link rel="stylesheet" href="terminal.css">
-<script src="terminal.js"></script>
-<script src="particles.js"></script> 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.css" />
-  
   <div id="terminal-container"></div>
   <div class="input-container">
     <input type="text" id="command-input" placeholder="Enter command...">
     <button onclick="sendCommand()">exec</button>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/4.7.0/xterm.min.css" />
+<script>
+  const terminalContainer = document.getElementById('terminal-container');
+  const term = new Terminal();
+  term.setOption('theme', {
+    background: '#0a0a0a',
+    foreground: '#ffffff',
+    black: '#0a0a0a',
+    red: '#ff4578',
+    green: '#6be839',
+    yellow: '#fdd835',
+    blue: '#009dff',
+    magenta: '#e040fb',
+    cyan: '#00e1ff',
+    white: '#ffffff',
+    brightBlack: '#5f5f5f',
+    brightRed: '#ff4578',
+    brightGreen: '#6be839',
+    brightYellow: '#fdd835',
+    brightBlue: '#009dff',
+    brightMagenta: '#e040fb',
+    brightCyan: '#00e1ff',
+    brightWhite: '#ffffff'
+  });
 
-  <script>
-    const terminalContainer = document.getElementById('terminal-container');
-    const term = new Terminal();
-    term.setOption('theme', {
-      background: '#0a0a0a',
-      foreground: '#ffffff',
-      black: '#0a0a0a',
-      red: '#ff4578',
-      green: '#6be839',
-      yellow: '#fdd835',
-      blue: '#009dff',
-      magenta: '#e040fb',
-      cyan: '#00e1ff',
-      white: '#ffffff',
-      brightBlack: '#5f5f5f',
-      brightRed: '#ff4578',
-      brightGreen: '#6be839',
-      brightYellow: '#fdd835',
-      brightBlue: '#009dff',
-      brightMagenta: '#e040fb',
-      brightCyan: '#00e1ff',
-      brightWhite: '#ffffff'
-    });
+  term.open(terminalContainer);
 
-    term.open(terminalContainer);
+  function sendCommand() {
+    const commandInput = document.getElementById('command-input');
+    const command = commandInput.value;
 
-    function sendCommand() {
-      const commandInput = document.getElementById('command-input');
-      const command = commandInput.value;
+    term.writeln('$ ' + command);
+    // Add your SSH connection code and command processing here
 
-      term.writeln('$ ' + command);
-      // Add your SSH connection code and command processing here
+    commandInput.value = '';
+  }
 
-      commandInput.value = '';
-    }
+  term.focus();
+</script>
 
-    term.focus();
-  </script>
-  
 </body>
 </html>
+
