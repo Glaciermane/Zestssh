@@ -48,3 +48,12 @@ body {
   margin-left: 10px;
   cursor: pointer;
 }
+
+#exec-button {
+  transition: transform 0.2s ease;
+}
+
+#exec-button:hover {
+  transform: scale(1.1);
+}
+
