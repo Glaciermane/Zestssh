@@ -1,4 +1,3 @@
-// Beispielcode für die Verbindungsherstellung und Befehlsausführung mit der ssh2-Bibliothek
 const Client = require('ssh2').Client;
 
 const host = process.env.HOST;
@@ -29,8 +28,8 @@ sshClient.on('ready', () => {
 });
 
 sshClient.connect({
-  host: HOST,
-  port: PORT,
-  username: USERNAME,
+  host: host,
+  port: port,
+  username: username,
   privateKey: SSHKEY
 });
