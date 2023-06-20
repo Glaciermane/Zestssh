@@ -29,8 +29,8 @@ sshClient.on('ready', () => {
 });
 
 sshClient.connect({
-  host: 'your-host',
-  port: 22,
-  username: 'your-username',
-  password: 'your-password'
+  host: HOST,
+  port: PORT,
+  username: USERNAME,
+  password: SSHKEY
 });
