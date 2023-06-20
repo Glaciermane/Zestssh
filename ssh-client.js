@@ -4,7 +4,7 @@ const Client = require('ssh2').Client;
 const host = process.env.HOST;
 const port = process.env.PORT;
 const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
+const SSHKEY = process.env.SSHKEY;
 
 // Restlicher Code zur Verbindungsherstellung und Befehlsausführung
 
